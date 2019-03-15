@@ -1,0 +1,1 @@
+Respect to Echo Coder for the code forked to create this dependency, and thank you to tknorris for the shared module it was based upon.

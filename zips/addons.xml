@@ -369,31 +369,60 @@ JAVStream V0.93.4 (3rd March 2018)
   </extension>
 </addon>
 
-<addon id="plugin.video.TAD" name="The Adult Directory" version="1.0.1" provider-name="Drakon">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0" />
-		<import addon="script.module.pyxbmct" version="1.1.4" />
-		<import addon="script.module.resolveurl" version="5.0.00" />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">The Adult Directory</summary>
-		<description lang="en">ADULT CONTENT: Porn website directory</description>
-		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
-		<news>Tweaks</news>
+<addon id="plugin.video.uwc"
+       name="Ultimate Whitecream"
+       version="1.1.66"
+       provider-name="Whitecream, holisticdioxide">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.resolveurl" version="5.0.00"/>
+        <import addon="script.module.resolveurl.xxx" version="2.0.01"/>
+        <import addon="script.video.F4mProxy" version="2.5.7" />
+		<import addon="script.module.requests" />
+
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>GPL 2.0</license>
+        <summary lang="en">Watch [COLOR red][B]ADULT[/B][/COLOR] Movies with Ultimate WhiteCream</summary>
+        <description lang="en">Watch [COLOR red][B]ADULT[/B][/COLOR] Movies with Ultimate WhiteCream</description>
+		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider. DMCA - holisticdioxide@protonmail.com</disclaimer>
 		<assets>
 			<icon>icon.png</icon>
 			<fanart>fanart.jpg</fanart>
-			<screenshot>resources/screenshots/screenshot-01.jpg</screenshot>
-			<screenshot>resources/screenshots/screenshot-02.jpg</screenshot>
-			<screenshot>resources/screenshots/screenshot-03.jpg</screenshot>
 		</assets>
-		<platform>all</platform>
-		<forum></forum>
-		<website></website>
-	</extension>
+        <news>[B]Version 1.1.66[/B]
+Fixed: Keyword deletion error
+Fixed: WatchXXXFree
+Fixed: Porntrex
+Fixed: Camsoda
+ADDED: YesPornPlease</news>
+    </extension>
+</addon>
+
+<addon
+  id="plugin.video.videodevil"
+  version="1.7.216"
+  name="VideoDevil"
+  provider-name="xbmc-adult">
+  <requires>
+   <import addon="xbmc.python" version="2.14.0"/>
+  </requires>
+  <extension
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Play videos from different adult streaming sites</summary>
+    <description>This addon plays videos from YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies and some other adult streaming sites. It contains explicit adult material. You may only view this addon if you are at least 18 years of age, or at least the age of majority in the jurisdiction where you reside or from which you access this content. If you do not meet these requirements, then you do not have permission to use this addon. </description>
+    <disclaimer>The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="script.adultflix.artwork" version="1.0.0" name="AdultFlix Artwork" provider-name="TV ADDONS">

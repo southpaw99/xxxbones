@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.kodibox.adult.artwork" version="1.0" name="KodiBox Adult Artwork" provider-name="KodiBox">
+<addon id="script.wankbank.artwork" version="1.0" name="wankbank Artwork" provider-name="bonecrusher">
 	<requires>
 		<import addon="xbmc.python" version="2.24.0"/>
 	</requires>
 	<extension point="xbmc.python.module" library="lib" />
 	<extension point="xbmc.addon.metadata">
-		<summary>Artwork for KodiBox Adult</summary>
-		<description>Artwork for KodiBox Adult is maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<summary>Artwork for wankbank</summary>
+		<description>Artwork for wankbank is maintained separately to make distribution of the the addon itself easier/faster.</description>
 		<platform>all</platform>
 	</extension>
 </addon>

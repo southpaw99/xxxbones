@@ -3,10 +3,10 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-
+import lover
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'http://pornilly.com'
@@ -43,7 +43,7 @@ def menu():
 			url = re.findall('<a href="(.*?)"',i, flags = re.DOTALL)[0]
 			icon = re.findall('<img src="(.*?)"',i, flags = re.DOTALL)[0]
 			desc = re.findall('<p>(.*?)</p>',i, flags = re.DOTALL)[0]
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url, 'mode': content_mode, 'icon': icon, 'fanart': fanarts, 'description': desc, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -58,9 +58,7 @@ def content(url,searched=False):
 
 	try:
 		c = client.request(url)
-		r = re.findall('<div class="panel-body">(.*?)<div class="panel bg-dark">',c , flags=re.DOTALL)[1]
-		pattern = r'''<a\s+href=['"]([^'"]+)".+?\s+.+?src=['"]([^'"]+).+?\s+.+?>\s+.+?>(.*?)<.+?\s+<p>(.*?)</p>'''
-		i = re.findall(pattern,r, flags=re.DOTALL)
+		r = re.findall('<div class="col-lg-4 col-sm-6">(.*?)</div>',c , flags=re.DOTALL)
 		if ( not r ) and ( not searched ):
 			log_utils.log('Scraping Error in %s:: Content of request: %s' % (base_name.title(),str(c)), log_utils.LOGERROR)
 			kodi.notify(msg='Scraping Error: Info Added To Log File', duration=6000, sound=True)
@@ -73,9 +71,14 @@ def content(url,searched=False):
 		
 	dirlst = []
 		
-	for url2,icon,name,desc in i:
+	for i in r:
 		try:
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			name = re.findall('<h3 class="h4">(.*?)</h3>',i,flags=re.DOTALL)[0]
+			url2 = re.findall('<a href="(.*?)"',i,flags=re.DOTALL)[0]
+			icon = re.findall('<img src="(.*?)"',i,flags=re.DOTALL)[0]
+			desc = re.findall('<p>(.*?)</p>',i,flags=re.DOTALL)[0]
+			desc = '[B][COLOR]Video Length :: [/B][/COLOR]' + desc
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'description': desc, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

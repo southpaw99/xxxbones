@@ -5,7 +5,7 @@ import subprocess
 from copy import deepcopy
 from time import sleep
 import requests 
-from resources.lib.modules import cfdecoder
+import cfdecoder
 
 from requests.sessions import Session
 

@@ -20,7 +20,7 @@ player_mode  = 810
 def content(url):
 
     try:
-        if not url: url = 'https://xxxmoviestream.com/?filtre=date&cat=0'
+        if not url: url = 'https://xtheatre.org/?filtre=date&cat=0'
         c = client.request(url)
         r = dom_parser2.parse_dom(c, 'li', {'class': ['border-radius-5','box-shadow']})
         r = [(dom_parser2.parse_dom(i, 'a', req=['href','title']), \

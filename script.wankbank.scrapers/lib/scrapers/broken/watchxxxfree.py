@@ -6,10 +6,10 @@ import log_utils
 
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 dialog = xbmcgui.Dialog()
 filename     = os.path.basename(__file__).split('.')[0]
-base_domain  = 'https://watchxxxfree.cc'
+base_domain  = 'https://xxxmoviestream.com/'
 base_name    = base_domain.replace('www.',''); base_name = re.findall('(?:\/\/|\.)([^.]+)\.',base_name)[0].title()
 type         = 'scenes'
 menu_mode    = 234
@@ -23,9 +23,8 @@ search_base  = urlparse.urljoin(base_domain,'?s=%s')
 def menu():
 
 
-
 	try:
-		url = urlparse.urljoin(base_domain,'/tube/categories/')
+		url = urlparse.urljoin(base_domain,'/categories/')
 		c = client.request(url)
 		r = re.findall('<li class="border-radius-5 box-shadow">(.*?)</li>',c, flags=re.DOTALL)
 		if ( not r ):
@@ -44,7 +43,7 @@ def menu():
 			name = re.findall('title="(.*?)"',i,flags=re.DOTALL)[2]
 			url = re.findall('<a href="(.*?)"',i,flags=re.DOTALL)[0]
 			icon = re.findall('data-lazy-src="(.*?)"',i,flags=re.DOTALL)[0]
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url, 'mode': content_mode, 'icon': icon, 'fanart': fanarts, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -82,7 +81,7 @@ def content(url,searched=False):
             if searched: description = 'Result provided by %s' % base_name.title()
             else: description = name
             content_url = i[0] + '|SPLIT|%s' % base_name
-            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
             dirlst.append({'name': name, 'url': content_url, 'mode': player_mode, 'icon': i[2].encode('utf-8'), 'fanart': fanarts, 'description': description, 'folder': False})
         except Exception as e:
             log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

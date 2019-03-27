@@ -3,11 +3,11 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-
+import lover
 from resources.lib.modules import utils
 from resources.lib.modules import helper
 from resources.lib.modules import linkfinder
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 
 filename     = 'sexkino'
 base_domain  = 'http://sexkino.to'
@@ -45,7 +45,7 @@ def content(url):
             name = i[1].title() + ' [ %s ]' % i[3]
             description = i[4]
             content_url = i[0] + '|SPLIT|%s' % base_name
-            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
             dirlst.append({'name': name, 'url': content_url, 'mode': player_mode, 'icon': i[2], 'fanart': fanarts, 'description': description, 'folder': False})
         except Exception as e:
             log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

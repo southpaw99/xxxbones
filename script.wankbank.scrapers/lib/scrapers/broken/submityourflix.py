@@ -7,7 +7,7 @@ import log_utils
 import xbmcgui
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 dialog = xbmcgui.Dialog()
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://www.submityourflicks.com'
@@ -22,7 +22,6 @@ search_base  = urlparse.urljoin(base_domain,'search/?s=%s')
 
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
-
 
 	try:
 		url = base_domain
@@ -41,7 +40,7 @@ def menu():
 			name = re.findall('title="(.*?)"',i, flags=re.DOTALL)[0]
 			icon = re.findall('<img src="(.*?)"',i, flags=re.DOTALL)[0]
 			if not base_domain in url2: url2 = base_domain + url2
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % base_name))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % base_name))
 			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item. %s:: Error: %s' % (base_name.title(),str(e)), log_utils.LOGERROR)
@@ -77,7 +76,7 @@ def content(url,searched=False):
 			name = re.findall('title="(.*?)"',i, flags=re.DOTALL)[0]
 			icon = re.findall('<img src="(.*?)"',i, flags=re.DOTALL)[0]
 			if not base_domain in url2: url2 = base_domain + url2
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % base_name))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % base_name))
 			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item. %s:: Error: %s' % (base_name.title(),str(e)), log_utils.LOGERROR)

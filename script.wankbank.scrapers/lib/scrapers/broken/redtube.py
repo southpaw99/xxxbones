@@ -3,10 +3,10 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-
+import lover
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 dialog = xbmcgui.Dialog()
 
 filename     = os.path.basename(__file__).split('.')[0]
@@ -23,7 +23,7 @@ search_base  = urlparse.urljoin(base_domain,'?search=%s')
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
     
-
+	lover.checkupdates()
 
 	try:
 		url = urlparse.urljoin(base_domain,'categories')
@@ -47,7 +47,7 @@ def menu():
 			if not base_domain in url: url = base_domain + url
 			icon  = re.findall('data-thumb_url="(.*?)"',i, flags = re.DOTALL)[0]
 			desc  = re.findall('<span class="category_count">(.*?)</span>',i, flags = re.DOTALL)[0].strip()
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url, 'mode': content_mode, 'icon': icon, 'fanart': fanarts,'description': desc, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -79,10 +79,10 @@ def content(url,searched=False):
 			name = re.findall('alt="(.*?)"',i, flags=re.DOTALL)[0]
 			url2  = re.findall('<a.+?href="(.*?)"',i, flags=re.DOTALL)[0]
 			if not base_domain in url2: url2 = base_domain + url2
-			icon = re.findall('data-thumb_url\s* =\s*"(.*?)"',i, flags=re.DOTALL)[0]
-			desc = re.findall('<span class="duration">(.*?)</span>',i, flags=re.DOTALL)[0].strip()
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
-			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'description': desc, 'folder': False})
+			icon = re.findall('data-thumb_url="(.*?)"',i, flags=re.DOTALL)[0]
+			#desc = re.findall('<span class="duration">(.*?)</span>',i, flags=re.DOTALL)[0].strip()
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
 

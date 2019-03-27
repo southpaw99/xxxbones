@@ -4,10 +4,10 @@ import kodi
 import cache
 import client
 import dom_parser2
-import scraper_updater
+import lover
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
 
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://justporno.tv'
@@ -23,7 +23,7 @@ search_base  = urlparse.urljoin(base_domain,'search?query=%s')
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
     
-    scraper_updater.check(filename)
+    lover.checkupdates()
     
     try:
         url = base_domain
@@ -45,8 +45,8 @@ def menu():
     if r:
         for i in r:
             try:
-                iconimage = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/icon.png' % filename))
-                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+                iconimage = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/icon.png' % filename))
+                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
                 name = kodi.sortX(i[1].encode('utf-8'))
                 dirlst.append({'name': name, 'url': i[0], 'mode': content_mode, 'icon': iconimage, 'fanart': fanarts, 'folder': True})
             except Exception as e:
@@ -62,13 +62,13 @@ def content(url,searched=False):
 
     try:
         c = client.request(url)
-        r = dom_parser2.parse_dom(c, 'div', {'class': ['large-4','medium-4','small-6','columns']})
+        r = dom_parser2.parse_dom(c, 'li')
         r = [(dom_parser2.parse_dom(i, 'a', req=['href','title']), \
-              dom_parser2.parse_dom(i, 'span', {'class': 'time'}), \
-              dom_parser2.parse_dom(i, 'img', req='data-src')) \
-              for i in r if i]
+              dom_parser2.parse_dom(i, 'i'), \
+              dom_parser2.parse_dom(i, 'img', req='data-original')) \
+              for i in r if '<noscript>' in i.content]
         r = [(urlparse.urljoin(base_domain,i[0][0].attrs['href']), i[0][0].attrs['title'], i[1][0].content, \
-            i[2][0].attrs['data-src'] if i[2][0].attrs['data-src'].startswith('http') else 'https:' + i[2][0].attrs['data-src']) for i in r]
+            i[2][0].attrs['data-original'] if i[2][0].attrs['data-original'].startswith('http') else 'https:' + i[2][0].attrs['data-original']) for i in r if i[2][0].attrs['data-original']]
         if ( not r ) and ( not searched ):
             log_utils.log('Scraping Error in %s:: Content of request: %s' % (base_name.title(),str(c)), log_utils.LOGERROR)
             kodi.notify(msg='Scraping Error: Info Added To Log File', duration=6000, sound=True)
@@ -88,7 +88,7 @@ def content(url,searched=False):
             if searched: description = 'Result provided by %s' % base_name.title()
             else: description = name
             content_url = i[0] + '|SPLIT|%s' % base_name
-            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
+            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
             dirlst.append({'name': name, 'url': content_url, 'mode': player_mode, 'icon': i[3], 'fanart': fanarts, 'description': description, 'folder': False})
         except Exception as e:
             log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[0].title(),base_name.title(),str(e)), log_utils.LOGERROR)

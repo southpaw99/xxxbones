@@ -7,12 +7,11 @@ import log_utils
 import xbmcgui
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir 
 dialog = xbmcgui.Dialog()
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://anysex.com'
-base_name    = base_domain.replace('www.','');
-base_name = re.findall('(?:\/\/|\.)([^.]+)\.',base_name)[0].title()
+base_name    = base_domain.replace('www.',''); base_name = re.findall('(?:\/\/|\.)([^.]+)\.',base_name)[0].title()
 type         = 'video'
 menu_mode    = 404
 content_mode = 405
@@ -23,6 +22,9 @@ search_base  = urlparse.urljoin(base_domain,'search/?q=%s')
 
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
+
+
+
 	try:
 		url = urlparse.urljoin(base_domain,'/categories/')
 		c = client.request(url)

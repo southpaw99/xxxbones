@@ -3,11 +3,11 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-import lover
+
 import xbmcgui
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
+buildDirectory = utils.buildDir 
 dialog = xbmcgui.Dialog()
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://anysex.com'
@@ -23,7 +23,7 @@ search_base  = urlparse.urljoin(base_domain,'search/?q=%s')
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
 
-	lover.checkupdates()
+
 
 	try:
 		url = urlparse.urljoin(base_domain,'/categories/')
@@ -42,7 +42,7 @@ def menu():
 			name = re.findall('<span class="title">(.*?)</span>',i, flags=re.DOTALL)[0]
 			url = re.findall('<a href="(.*?)"',i, flags=re.DOTALL)[0]
 			icon = re.findall('<img class="thumb"\s+src="(.*?)"',i, flags=re.DOTALL)[0]
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % base_name))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % base_name))
 			dirlst.append({'name': name, 'url': url,'mode': content_mode, 'icon': icon, 'fanart': fanarts, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item. %s:: Error: %s' % (base_name.title(),str(e)), log_utils.LOGERROR)
@@ -72,7 +72,7 @@ def content(url,searched=False):
 			if not base_domain in url2: url2 = base_domain + url2
 			icon = re.findall('<img\s+class="thumb"\s+src="(.*?)"',i, flags=re.DOTALL)[0]
 			time = re.findall('<span\s+class="time">(.*?)</span>',i, flags=re.DOTALL)[0]
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name + '[COLOR yellow] | ' + time + '[/COLOR]', 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item. %s:: Error: %s' % (base_name.title(),str(e)), log_utils.LOGERROR)

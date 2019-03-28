@@ -3,10 +3,10 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-import scraper_updater
+
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir 
 
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://www.8muses.com'
@@ -45,7 +45,7 @@ def menu(url=None):
     for i in r:
         try:
             name = kodi.sortX(i[1].encode('utf-8')).title()
-            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.kodibox.adult.artwork', 'resources/art/%s/fanart.jpg' % filename))
+            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
             dirlst.append({'name': name, 'url': i[0], 'mode': comics_mode, 'icon': i[2], 'fanart': fanarts, 'folder': True})
         except Exception as e:
             log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -100,7 +100,7 @@ def comics(url=None):
         for i in r:
             try:
                 name = kodi.sortX(i[1].encode('utf-8')).title()
-                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.kodibox.adult.artwork', 'resources/art/%s/fanart.jpg' % filename))
+                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
                 dirlst.append({'name': name, 'url': i[0], 'mode': comics_mode, 'icon': i[2], 'fanart': fanarts, 'folder': True})
             except Exception as e:
                 log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -109,7 +109,7 @@ def comics(url=None):
         for i in r:
             try:
                 name = 'Page %s'% str(num)
-                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.kodibox.adult.artwork', 'resources/art/%s/fanart.jpg' % filename))
+                fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
                 dirlst.append({'name': name, 'url': i[0], 'mode': pic_v_mode, 'icon': i[1], 'fanart': fanarts, 'folder': False})
             except Exception as e:
                 log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

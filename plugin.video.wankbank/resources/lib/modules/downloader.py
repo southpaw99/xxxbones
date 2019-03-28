@@ -157,7 +157,7 @@ def find_link(url, name, iconimage, downloadableLink=False):
                 quit()
             log_utils.log('Link returned by XXX Resolver :: %s' % (u), log_utils.LOGNOTICE)
         else:
-            log_utils.log('%s is not a valid SMU resolvable link. Attempting to resolve by Wank Bank backup resolver.' % (url), log_utils.LOGNOTICE)
+            log_utils.log('%s is not a valid SMU resolvable link. Attempting to resolve by XXXODUS backup resolver.' % (url), log_utils.LOGNOTICE)
             try:
                 u = adultresolver.resolve(url)
             except Exception as e:
@@ -165,7 +165,7 @@ def find_link(url, name, iconimage, downloadableLink=False):
                 kodi.idle()
                 kodi.notify(msg='Something went wrong!  | %s' % str(e), duration=8000, sound=True)
                 quit()
-            log_utils.log('%s returned by Wank Bank backup resolver.' % (u), log_utils.LOGNOTICE)
+            log_utils.log('%s returned by wankbank backup resolver.' % (u), log_utils.LOGNOTICE)
         if (not isinstance(u, str)): 
             try:
                 u = multilinkselector(u)

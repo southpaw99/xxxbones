@@ -3,11 +3,11 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-import lover
+
 from resources.lib.modules import utils
 from resources.lib.modules import helper
 import xbmcgui
-buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
+buildDirectory = utils.buildDir 
 dialog = xbmcgui.Dialog()
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'https://www.youporn.com'
@@ -23,7 +23,7 @@ search_base  = urlparse.urljoin(base_domain,'search/?query=%s')
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
 
-	lover.checkupdates()
+
 
 	try:
 		url = urlparse.urljoin(base_domain,'categories')
@@ -45,7 +45,7 @@ def menu():
 	for link,icon,name in matches:
 		try:
 			if not base_domain in link: link = base_domain + link
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': link, 'mode': content_mode, 'icon': icon, 'fanart': fanarts, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -85,7 +85,7 @@ def content(url,searched=False):
             if searched: description = 'Result provided by %s' % base_name.title()
             else: description = name
             content_url = i[0] + '|SPLIT|%s' % base_name
-            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+            fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
             dirlst.append({'name': name, 'url': content_url, 'mode': player_mode, 'icon': i[3], 'fanart': fanarts, 'description': description, 'folder': False})
         except Exception as e:
             log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

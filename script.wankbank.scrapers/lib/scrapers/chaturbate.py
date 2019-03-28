@@ -7,7 +7,7 @@ import log_utils
 from resources.lib.modules import utils
 from resources.lib.modules import helper
 from resources.lib.modules import player
-buildDirectory = utils.buildDir
+buildDirectory = utils.buildDir 
 
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'http://chaturbate.com'
@@ -37,7 +37,7 @@ conn.close()
 @utils.url_dispatcher.register('%s' % menu_mode)
 def menu():
     
-
+    
     
     url = base_domain
     r = client.request(url)

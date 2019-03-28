@@ -169,7 +169,7 @@ def buildDir(items, content='dirs', cm=None, search=False, stopend=False, isVide
 
             open_set = '%s?mode=%s' \
             % (sysaddon,str('19'))
-            stext = "Open Wank Bank Settings"
+            stext = "Open wankbank Settings"
             cm.append(('%s' % stext, 'xbmc.RunPlugin('+open_set+')'))
 
             if isDownloadable: view_type = 'thumb'
@@ -225,8 +225,8 @@ def depVersions():
     try:
         xml1 = client.request('https://raw.githubusercontent.com/Colossal1/repository.colossus/master/addons.xml')
         xml2 = client.request('https://raw.githubusercontent.com/Colossal1/repository.colossus.common/master/addons.xml')
-        lst = [('plugin.video.wankbank'),('script.wankbank.scrapers'),('script.wankbank.artwork'), \
-               ('script.module.wankbank'),('script.module.resolveurl'),('script.module.resolveurl.xxx')]
+        lst = [('plugin.video.wankbank'),('script.xxxodus.scrapers'),('script.wankbank.artwork'), \
+               ('script.module.echo'),('script.module.resolveurl'),('script.module.resolveurl.xxx')]
 
         c = []
         c += [(kodi.giveColor('Kodi Version: ','white',True) + kodi.giveColor(xbmc_version,'pink'), kodi.addonicon, kodi.addonfanart, xbmc_version)]
@@ -339,13 +339,13 @@ def viewDialog(url):
         with open(url,mode='r')as f: msg_text = f.read()
     from resources.lib.pyxbmct_.github import xxxtext
     #xxxtext.TextWindow(msg_text)
-    window = TextBox('Wank Bank')
+    window = TextBox('wankbank')
     window.doModal()
     del window
 
 class TextBox(pyxbmct.AddonDialogWindow):
 
-    def __init__(self, title='Wank Bank'):
+    def __init__(self, title='wankbank'):
         super(TextBox, self).__init__(title)
         self.setGeometry(950, 600, 10, 30, 0, 5, 5)
         self.set_info_controls()
@@ -382,12 +382,12 @@ class TextBox(pyxbmct.AddonDialogWindow):
 def hard_reset():
 
     viewDialog(xbmc.translatePath(os.path.join(kodi.addonfolder , 'resources/files/reset.txt')))
-    choice = xbmcgui.Dialog().yesno("[COLOR orangered][B]RESET Wank Bank?[/B][/COLOR]", '[COLOR white]ARE YOU SURE YOU WANT TO RETURN Wank Bank TO THE DEFAULT STATE AND LOSE ALL YOUR INFORMATION?[/COLOR]')
+    choice = xbmcgui.Dialog().yesno("[COLOR orangered][B]RESET wankbank?[/B][/COLOR]", '[COLOR white]ARE YOU SURE YOU WANT TO RETURN wankbank TO THE DEFAULT STATE AND LOSE ALL YOUR INFORMATION?[/COLOR]')
     if choice:
         try:
             shutil.rmtree(kodi.datafolder)
         except:
             kodi.dialog.ok(kodi.get_name(), "[COLOR white]There was an error deleting deleting the data directory.[/COLOR]")
             quit()
-        kodi.dialog.ok(kodi.get_name(), "[COLOR white]Wank Bank has been reset to the factory state.[/COLOR]","[COLOR white]Press OK to continue.[/COLOR]")
+        kodi.dialog.ok(kodi.get_name(), "[COLOR white]wankbank has been reset to the factory state.[/COLOR]","[COLOR white]Press OK to continue.[/COLOR]")
         xbmc.executebuiltin("Container.Refresh")

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.wankbank.scrapers" name="Wank Bank Scrapers" version="1.0.3" provider-name="bonecrusher">
+<addon id="script.wankbank.scrapers" name="Wank Bank Scrapers" version="1.0.4" provider-name="bonecrusher">
 	<requires>
 		<import addon="xbmc.python" version="2.24.0" />
 	</requires>

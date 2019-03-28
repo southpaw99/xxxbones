@@ -1,12 +1,29 @@
+"""
+    Copyright (C) 2016 ECHO Coder
 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
 import xbmc,xbmcplugin,os,urllib,base64
 import kodi
 import log_utils
+import xbmcgui
 import helper
 import utils
 import search
 import downloader
 import parental
+import xbmcaddon
 import history
 import favorites
 import picture_viewer
@@ -14,44 +31,44 @@ import client
 from resources.lib.pyxbmct_.github import xxxgit
 from scrapers import __all__
 from scrapers import *
-
+messagetext  = 'https://pastebin.com/raw/SgsRvwZV'
 buildDirectory = utils.buildDir
 specific_icon       = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork/resources/art/', '%s/icon.png'))
 specific_fanart     = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork/resources/art/', '%s/fanart.jpg'))
 
 @utils.url_dispatcher.register('0')
-def mainMenu():
-    
-    art = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork/resources/art/', 'main/%s.png'))
 
+
+def mainMenu():
+
+    art = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork/resources/art/', 'main/%s.png'))
+    popup()
     dirlst = []
     c = []
-    
     c += [
-         (kodi.giveColor('Welcome to Wank Bank Version %s' % kodi.get_version() ,'blue',True),xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'icon','All issues must be reported at https://github.com/Colossal1/plugin.video.wankbank/issues or I will not know the issues exist. I will not provide support at any other location as one central place for everyone to see and discuss issues benefits everyone.',False), \
-         (kodi.giveColor(kodi.countGitHubIssues('https://github.com/Colossal1/plugin.video.wankbank/issues'),'blue',True) + kodi.giveColor(' | Click To View Issues','white',True),None,34,'report','All issues must be reported at https://github.com/Colossal1/plugin.video.wankbank/issues or I will not know the issues exist. I will not provide support at any other location as one central place for everyone to see and discuss issues benefits everyone.',False), \
-         ('Search...',None,29,'search','Search Wank Bank',True), \
+         (kodi.giveColor('Welcome to wankbank Version %s' % kodi.get_version() ,'blue',True),xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'icon','Original Code by EchoCoder, Please Report All issues to @Nemzzy668',False), \
+         ('[COLOR yellow]View Changelog[/COLOR]',xbmc.translatePath(os.path.join(kodi.addonfolder, 'changelog.txt')),17,'changelog','View wankbank Changelog.',False), \
+         ('Search...',None,29,'search','Search wankbank',True), \
          ('Live Cams',None,37,'webcams','Live Cams',True), \
          ('Tubes',None,4,'tubes','Videos',True), \
-         #('Scenes',None,36,'scenes','XXX Scenes',True), \
+         ('Scenes',None,36,'scenes','XXX Scenes',True), \
          ('Movies',None,43,'movies','XXX Movies',True), \
          ('Virtual Reality',None,42,'vr','XXX Virtual Reality',True), \
          ('Hentai',None,39,'hentai','Hentai',True), \
-         ('Vintage',None,270,'vintage','Vintage',True), \
+         #('Vintage',None,270,'vintage','Vintage',True), \
          ('Fetish',None,40,'fetish','Fetish',True), \
          ('Pictures',None,35,'pics','Pictures',True), \
-         ('Comics',None,41,'comics','Comics',True), \
+         #('Comics',None,41,'comics','Comics',True), \
          ('Parental Controls',None,5,'parental_controls','View/Change Parental Control Settings.',True), \
          ('Your History',None,20,'history','View Your History.',True), \
          ('Your Favourites',None,23,'favourites','View Your Favourites.',True), \
          ('Your Downloads',None,27,'downloads','View Your Downloads.',True), \
          ('Your Settings',None,19,'settings','View/Change Addon Settings.',False), \
-         ('View Disclaimer',xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/disclaimer.txt')),17,'disclaimer','View Wank Bank Disclaimer.',False), \
-         ('View Addon Information',xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'addon_info','View Wank Bank Information.',False), \
-         ('View Changelog',xbmc.translatePath(os.path.join(kodi.addonfolder, 'changelog.txt')),17,'changelog','View Wank Bank Changelog.',False), \
-         ('Debug Versions',None,45,'addon_info','View the versions of Wank Bank and its dependencies for debugging.',True), \
-         ('RESET Wank Bank',None,18,'reset','Reset Wank Bank to Factory Settings.',False), \
-         (kodi.giveColor('Report Issues @ https://github.com/Colossal1/plugin.video.wankbank/issues','violet',True),xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'report','All issues must be reported at https://github.com/Colossal1/plugin.video.wankbank/issues or I will not know the issues exist. I will not provide support at any other location as one central place for everyone to see and discuss issues benefits everyone.',False), \
+         ('View Disclaimer',xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/disclaimer.txt')),17,'disclaimer','View wankbank Disclaimer.',False), \
+         ('View Addon Information',xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'addon_info','View wankbank Information.',False), \
+         ('Debug Versions',None,45,'addon_info','View the versions of XXXODUS and its dependencies for debugging.',True), \
+         ('RESET wankbank',None,18,'reset','Reset wankbank to Factory Settings.',False), \
+         #(kodi.giveColor('Report Issues @ https://github.com/Colossal1/plugin.video.wankbank/issues','violet',True),xbmc.translatePath(os.path.join(kodi.addonfolder, 'resources/files/information.txt')),17,'report','All issues must be reported at https://github.com/Colossal1/plugin.video.wankbank/issues or I will not know the issues exist. I will not provide support at any other location as one central place for everyone to see and discuss issues benefits everyone.',False), \
          ]
     
     for i in c:
@@ -62,6 +79,8 @@ def mainMenu():
     buildDirectory(dirlst, cache=False)
     
 @utils.url_dispatcher.register('37')
+
+
 def cams():
 
     sources = __all__ ; cam_sources = []; base_name = []; menu_mode = []; art_dir = []
@@ -249,3 +268,40 @@ def pictures():
             dirlst.append({'name': kodi.giveColor(i[0],'white'), 'url': None, 'mode': i[1], 'icon': specific_icon % i[2], 'fanart': specific_fanart % i[2], 'folder': True})
 
     buildDirectory(dirlst)
+
+def popup():
+
+	try:
+		message = client.request(messagetext)
+		if len(message)>1:
+			path = xbmcaddon.Addon().getAddonInfo('path')
+			comparefile = os.path.join(os.path.join(path,''), 'popup.txt')
+			r = open(comparefile)
+			compfile = r.read()       
+			if compfile == message:pass
+			else:
+				showText('[B][COLOR pink]wankbank LATEST NEWS[/B][/COLOR]', message)
+				text_file = open(comparefile, "w")
+				text_file.write(message)
+				text_file.close()
+	except: pass
+			
+def showText(heading, text):
+
+	try:
+		id = 10147
+		xbmc.executebuiltin('ActivateWindow(%d)' % id)
+		xbmc.sleep(500)
+		win = xbmcgui.Window(id)
+		retry = 50
+		while (retry > 0):
+			try:
+				xbmc.sleep(10)
+				retry -= 1
+				win.getControl(1).setLabel(heading)
+				win.getControl(5).setText(text)
+				quit()
+				return
+			except: pass
+	except: pass
+

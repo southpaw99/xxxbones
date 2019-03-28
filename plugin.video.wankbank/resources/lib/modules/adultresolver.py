@@ -98,7 +98,7 @@ class streamer:
 
 			elif 'mixhdporn.com' in url: u = self.mixhd(url)      
 			
-			elif 'xtheatre.org' in url: u = self.xtheatre(url)                      
+			elif 'xtheatre.net' in url: u = self.xtheatre(url)                      
 			
 			elif 'youporn.com' in url: u = self.youporn(url)                      
 

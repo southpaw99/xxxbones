@@ -129,7 +129,7 @@ def searchHistory(name,url):
     mode,site = url.split('|SPLIT|')
     mode = int(mode)
 
-    lst = [('New Search...',mode,'null','Search Wank Bank',True),('Clear History',15,'url',None,False), \
+    lst = [('New Search...',mode,'null','Search wankbank',True),('Clear History',15,'url',None,False), \
         ('Disable Search History',16,None,None,False),('################## Recent Searches #########################',999,'url',None,False)]
 
     conn = sqlite3.connect(searchdb)

@@ -3,10 +3,10 @@ import client
 import kodi
 import dom_parser2
 import log_utils
-import lover
+
 from resources.lib.modules import utils
 from resources.lib.modules import helper
-buildDirectory = utils.buildDir #CODE BY NEMZZY AND ECHO
+buildDirectory = utils.buildDir 
 
 filename     = os.path.basename(__file__).split('.')[0]
 base_domain  = 'http://pornilly.com'
@@ -43,7 +43,7 @@ def menu():
 			url = re.findall('<a href="(.*?)"',i, flags = re.DOTALL)[0]
 			icon = re.findall('<img src="(.*?)"',i, flags = re.DOTALL)[0]
 			desc = re.findall('<p>(.*?)</p>',i, flags = re.DOTALL)[0]
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url, 'mode': content_mode, 'icon': icon, 'fanart': fanarts, 'description': desc, 'folder': True})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)
@@ -78,7 +78,7 @@ def content(url,searched=False):
 			icon = re.findall('<img src="(.*?)"',i,flags=re.DOTALL)[0]
 			desc = re.findall('<p>(.*?)</p>',i,flags=re.DOTALL)[0]
 			desc = '[B][COLOR]Video Length :: [/B][/COLOR]' + desc
-			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.xxxodus.artwork', 'resources/art/%s/fanart.jpg' % filename))
+			fanarts = xbmc.translatePath(os.path.join('special://home/addons/script.wankbank.artwork', 'resources/art/%s/fanart.jpg' % filename))
 			dirlst.append({'name': name, 'url': url2, 'mode': player_mode, 'icon': icon, 'fanart': fanarts, 'description': desc, 'folder': False})
 		except Exception as e:
 			log_utils.log('Error adding menu item %s in %s:: Error: %s' % (i[1].title(),base_name.title(),str(e)), log_utils.LOGERROR)

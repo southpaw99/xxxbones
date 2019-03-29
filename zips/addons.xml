@@ -221,7 +221,7 @@ Fixed: ParadiseHill
   </extension>
 </addon>
 
-<addon id="plugin.video.wankbank" name="Wank Bank" version="14.0" provider-name="BoneCrusher">
+<addon id="plugin.video.wankbank" name="Wank Bank" version="15.0" provider-name="BoneCrusher">
   <requires>
     <import addon="xbmc.python" version="2.24.0"/>
     <import addon="script.module.wankbank"/>
@@ -304,7 +304,7 @@ Fixed: ParadiseHill
 	</extension>
 </addon>
 
-<addon id="script.wankbank.scrapers" name="Wank Bank Scrapers" version="1.0.4" provider-name="bonecrusher">
+<addon id="script.wankbank.scrapers" name="Wank Bank Scrapers" version="1.0.5" provider-name="bonecrusher">
 	<requires>
 		<import addon="xbmc.python" version="2.24.0" />
 	</requires>

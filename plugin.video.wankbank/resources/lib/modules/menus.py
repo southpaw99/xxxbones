@@ -80,7 +80,10 @@ def mainMenu():
     
 @utils.url_dispatcher.register('37')
 
-
+@utils.url_dispatcher.register('8')
+def smrSettings():
+    utils.resolveurl.display_settings()
+	
 def cams():
 
     sources = __all__ ; cam_sources = []; base_name = []; menu_mode = []; art_dir = []

@@ -25,7 +25,7 @@ def menu():
     
     
     try:
-        url = urlparse.urljoin(base_domain, 'categories.html')
+        url = urlparse.urljoin(base_domain, 'tags.html')
         c = client.request(url)
         r = dom_parser2.parse_dom(c, 'li')
         r = [i for i in r if '<span class="category-thumb">' in i.content]
